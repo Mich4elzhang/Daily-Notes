@@ -1,0 +1,26 @@
+来自金步国作品集（http://www.jinbuguo.com/）
+从源代码安装过软件的朋友一定对 ./configure && make && make install 安装三步曲非常熟悉了。
+然而究竟这个过程中的每一步幕后都发生了些什么呢？本文将带领你一探究竟。
+深入理解这个过程将有助于你在LFS的基础上玩出自己的花样来。
+不过需要说明的是本文对 Makefile 和 make 的讲解是相当近视和粗浅的，但是对于理解安装过程来说足够了。
+
+用一句话来解释这个过程就是：
+根据源码包中 Makefile.in 文件的指示，configure 脚本检查当前的系统环境和配置选项，
+在当前目录中生成 Makefile 文件(还有其它本文无需关心的文件)，
+然后 make 程序就按照当前目录中的 Makefile 文件的指示将源代码编译为二进制文件，
+最后将这些二进制文件移动(即安装)到指定的地方(仍然按照 Makefile 文件的指示)。
+
+由此可见 Makefile 文件是幕后的核心。要深入理解安装过程，必须首先对 Makefile 文件有充分的了解。
+本文将首先讲述 Makefile 与 make ，然后再讲述 configure 脚本。并且在讲述这两部分内容时，提供了尽可能详细的、可以运用于实践的参考资料。
+
+Makefile 与 make
+用一句话来概括Makefile 与 make 的关系就是：
+Makefile 包含了所有的规则和目标，而 make 则是为了完成目标而去解释 Makefile 规则的工具。
+
+make 语法
+首先看看 make 的命令行语法：make [options] [targets] [VAR=VALUE]...
+
+[options]是命令行选项，可以用 make --help 命令查看全部，[VAR=VALUE]是在命令行上指定环境变量，这两个大家都很熟悉，将在稍后详细讲解。
+而[targets]是什么呢？字面的意思是"目标"，也就是希望本次 make 命令所完成的任务。
+凭经验猜测，这个[targets]大概可以用"check","install"之类(也就是常见的测试和安装命令)。但是它到底是个啥玩意儿？不带任何"目标"的 make 命令是什么意思？
+为什么在安装 LFS 工具链中的 Perl-5.8.8 软件包时会出现"make perl utilities"这样怪异的命令？要回答这些问题必须首先理解 Makefile 文件中的"规则"。 
