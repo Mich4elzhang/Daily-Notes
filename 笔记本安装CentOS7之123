@@ -6,6 +6,12 @@ Applications -- System Tools -- Setting -- Regin & Language -- Input Source
 使用Shift切换中英文，或者直接在屏幕的右上方选择中英文。
 
 2、笔记本安装CentOS7之系统启动项
+blog.csdn.net/txl199106/article/details/41344399
+blog.csdn.net/muzilanlan/article/details/29220133
+www.bubuko.com/infodetail-1057065.html
+
+用grub引导win7，在U盘安装完CentOS7后再安装ntfs-3g，然后在root下执行grub-mkconfig -o /boot/grub2/grub.cfg
+过程中会发现win7 loader，开机启动即可
 
 默认情况下，CentOS7不支持Windows NTFS硬盘分区的读写，要想把NTFS格式的磁盘挂载到CentOS下面采用编译安装插件ntfs-3g
 
