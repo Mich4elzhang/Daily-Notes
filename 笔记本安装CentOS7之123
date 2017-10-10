@@ -23,4 +23,25 @@ yum install gcc
 查看使用
 fdisk -l
 
+更新python版本（https://blog.fazero.me/2016/10/13/centos-update-python/）
+wget http://www.python.org/ftp/python/2.7.14/Python-2.7.14.tar.xz
+xz -d Python-2.7.14.tar.xz
+tar -xvf Python-2.7.12.tar
+cd Python-2.7.12
+在编译前先在/usr/local建一个文件夹python27（作为python的安装路径，以免覆盖老的版本，新旧版本可以共存的)
+mkdir /usr/local/python27
+编译前需要安装下面依赖，否则下面安装pip就会出错
+yum install openssl openssl-devel zlib-devel gcc -y
 
+vim ./Modules/Setup.dst
+找到#zlib zlibmodule.c -I$(prefix)/include -L$(exec_prefix)/lib -lz去掉注释并保存(即去掉井号)
+./configure --prefix=/usr/local/python27 --with-zlib
+make
+make install
+此时没有覆盖老版本，再将原来/usr/bin/python链接改为别的名字
+mv /usr/bin/python /usr/bin/python2.6.6
+ln -s /usr/local/python2.7.12/bin/python2.7 /usr/bin/python
+
+修改yum配置文件
+之所以要保留旧版本，因为yum依赖Python2.6，改下yum的配置文件，指定旧的Python版本就可以了。
+vim /usr/bin/yum，将第一行的#!/usr/bin/python修改成#!/usr/bin/python2.6.6
