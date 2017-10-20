@@ -1,0 +1,21 @@
+1. Python更新后yum报错
+[root@iZ23t4pnz63Z ~]# yum update
+Loaded plugins: fastest mirror
+Loading mirror speeds from cached hostile
+ base: mirrors.aliyuncs.com
+ epel: mirrors.aliyuncs.com
+ extras: mirrors.aliyuncs.com
+ updates: mirrors.aliyuncs.com
+Traceback (most recent call last):
+File "/usr/libexec/urlgrabber-ext-down", line 22, in <module>
+from urlgrabber.grabber import \
+ImportError: No module named urlgrabber.grabber
+Traceback (most recent call last):
+File "/usr/libexec/urlgrabber-ext-down", line 22, in <module>
+from urlgrabber.grabber import \
+ImportError: No module named urlgrabber.grabber
+
+解决方法：
+
+vi /usr/libexec/urlgrabber-ext-down
+把头部的python改成和/usr/bin/yum中一样的
