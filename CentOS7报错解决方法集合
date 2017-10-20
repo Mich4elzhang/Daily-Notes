@@ -19,3 +19,15 @@ ImportError: No module named urlgrabber.grabber
 
 vi /usr/libexec/urlgrabber-ext-down
 把头部的python改成和/usr/bin/yum中一样的
+
+2.源码安装wireshark
+
+checking libmount/libmount.h usability... no
+checking libmount/libmount.h presence... no
+checking for libmount/libmount.h... no
+configure: error: *** Could not find libmount
+
+解决方法：
+
+you likely need to pass --enable-libmount=no to HOST_CONFIGURE_VARS as well.
+./configure --enable-libmount=no
