@@ -14,8 +14,63 @@ java list总结 http://wiki.jikexueyuan.com/project/java-enhancement/java-thirty
 java8 流逐行读取文件
 http://justcode.ikeepstudying.com/2017/05/java-java8%E6%B5%81%E9%80%90%E8%A1%8C%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/
 http://www.cnblogs.com/0201zcr/p/5009975.html
+http://heipark.iteye.com/blog/1157676
 
 http://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/crontab.html
 
 Java 8 Stream ¨C Read a file line by line
 https://www.mkyong.com/java8/java-8-stream-read-a-file-line-by-line/
+
+hibernate5.2.10.Final基本配置
+http://www.cnblogs.com/luoxiaozhao/p/6999541.html?utm_source=itdadao&utm_medium=referral
+
+IT大道
+http://www.itdadao.com/category/c15p0.html
+
+Hibernate 原生查询 createSQLQuery 详解
+http://blog.csdn.net/myxx520/article/details/3281222
+
+压缩和解压文件的工具类（ant-1.8.4.jar）
+http://blog.csdn.net/SuperBoo/article/details/22184191
+
+Java Hibernate 5 Tutorial for Beginners
+http://docs.jboss.org/hibernate/orm/3.6/reference/en-US/html/queryhql.html
+http://viralpatel.net/blogs/hibernate-maven-mysql-hello-world-example-xml-mapping/
+http://docs.jboss.org/hibernate/orm/5.0/userguide/html_single/Hibernate_User_Guide.html#_obtaining_an_sessionfactory
+https://www.boraji.com/hibernate-5-criteria-query-example
+http://www.cnblogs.com/miller-zou/p/5710826.html
+http://www.voidcn.com/article/p-tpzzjkja-ws.html
+http://o7planning.org/en/10201/java-hibernate-tutorial-for-beginners#a77418
+https://docs.jboss.org/hibernate/orm/4.3/javadocs/org/hibernate/boot/registry/StandardServiceRegistryBuilder.html
+https://www.boraji.com/hibernate-5-basic-configuration-example
+
+java遍历map
+http://blog.csdn.net/tjcyjd/article/details/11111401
+
+总结：各种加锁方法对于Map
+http://blog.csdn.net/ljg472010941/article/details/7329202
+
+使用sulley 进行fuzzing
+http://yunpiao.pub/page/2/
+
+opencsv
+https://www.journaldev.com/12014/opencsv-csvreader-csvwriter-example
+https://howtodoinjava.com/apache-commons/parse-read-write-csv-files-opencsv-tutorial/
+https://www.programcreek.com/java-api-examples/index.php?api=au.com.bytecode.opencsv.CSVWriter
+https://www.programcreek.com/java-api-examples/index.php?api=com.opencsv.CSVWriter
+
+java IO NIO
+https://www.tutorialspoint.com/java/io/writer_write_string_len.htm
+https://java-nio.avenwu.net/java-nio-filechannel.html
+http://ifeve.com/file-channel/
+
+揭秘：职业APT攻击组织Pitty Tiger全解析 http://www.68iis.com/aqfh/wlaq/11886_10.html
+网络安全框架 http://blog.sina.com.cn/s/blog_7570f7920101b75t.html
+网络安全---应用层拒绝服务攻击 http://blog.sina.com.cn/s/blog_7570f7920101b75u.html
+
+Exec Source使用及源码分析
+http://blog.csdn.net/qianshangding0708/article/details/49736019
+https://www.programcreek.com/java-api-examples/index.php?api=org.apache.flume.Context
+
+openvas
+https://launchpad.net/~mrazavi/+archive/ubuntu/openvas
