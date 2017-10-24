@@ -1,0 +1,14 @@
+TeaKKi Java实现FTP批量大文件上传下载 https://teakki.com/p/57df75681201d4c1629b83c9
+
+导入安全证书到java的cacerts证书库 http://blog.csdn.net/wangjunjun2008/article/details/37662851
+keytool -import -keystore ../jre/lib/security/cacerts -trustcacerts -alias "VeriSign Class 3 International Server CA - G3" -file /pathto/SVRIntlG3.cer
+
+Apache HttpClient 4.5 HTTP POST Request Method Example 
+http://memorynotfound.com/apache-httpclient-http-post-request-method-example/
+https://www.mkyong.com/java/apache-httpclient-examples/
+http://blog.csdn.net/u010739973/article/details/45224881
+http://blog.csdn.net/qq122627018/article/details/51473150
+
+java list总结 http://wiki.jikexueyuan.com/project/java-enhancement/java-thirtytwo.html
+
+http://justcode.ikeepstudying.com/2017/05/java-java8%E6%B5%81%E9%80%90%E8%A1%8C%E8%AF%BB%E5%8F%96%E6%96%87%E4%BB%B6/
