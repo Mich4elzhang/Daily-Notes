@@ -45,3 +45,73 @@ ln -s /usr/local/python2.7.12/bin/python2.7 /usr/bin/python
 修改yum配置文件
 之所以要保留旧版本，因为yum依赖Python2.6，改下yum的配置文件，指定旧的Python版本就可以了。
 vim /usr/bin/yum，将第一行的#!/usr/bin/python修改成#!/usr/bin/python2.6.6
+
+CentOS配置网络
+cd /etc/sysconfig/network-scripts/ && ls
+vim ifcfg-ens32
+TYPE="Ethernet"
+BOOTPROTO="none" # change "none" or "dhcp" to "static"
+DEFROUTE="yes"
+IPV4_FAILURE_FATAL="no"
+IPV6INIT="yes"
+IPV6_AUTOCONF="yes" # change all "yes" to "no" about IPV6
+IPV6_DEFROUTE="yes"
+IPV6_FAILURE_FATAL="no"
+IPV6_ADDR_GEN_MODE="stable-privacy"
+NAME="ens32"
+UUID="b7709de9-f532-4d2f-97d7-783fa6edeaaa"
+DEVICE="ens32"
+ONBOOT="yes"
+IPADDR="10.16.2.87"
+PREFIX="24" # or NETMASK=255.255.255.0
+GATEWAY="10.16.2.1"
+DNS1="10.16.2.5"
+DNS2=114.114.114.114
+DOMAIN="synnex.org"
+IPV6_PEERDNS="yes"
+IPV6_PEERROUTES="yes"
+IPV6_PRIVACY="no"
+
+配置主机名&主机记录
+# vim /etc/hostname
+# vim /etc/hosts
+添加  主机IPv4地址   主机名   域名
+
+# systemctl restart network.service
+
+
+配置vsFTPd安全：
+1.在防火墙上允许ftp服务
+2.添加允许TCP端口3001-3100
+
+//修改"/etc/vsftpd/vsftpd.conf"配置文件，启用被动模式
+# vim /etc/vsftpd/vsftpd.conf
+//添加如下内容
+pasv_enable=YES
+pasv_min_port=3001
+pasv_max_port=3100
+//设置SELinux规则
+# setsebool allow ftpd full access 1
+# setsebool httpd enable ftp server 1
+# systemctl restart vsftpd
+
+kill后台运行的yum自动更新程序
+# kill -9 $(cat /var/run/yum.pid)
+# yum -y clean all
+
+配置本地yum源
+# cd /etc/yum.repos.d/
+# mkdir old
+# mv * old
+# cp old/CentOS-Base.repo ./
+# vim CentOS-Base.reps
+
+[base]
+name=CentOS-$releasever - Base
+baseurl=:///var/ftp/yum
+enabled=1
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+
+# yum -y clean all
+# yum install xxx
