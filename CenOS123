@@ -1,0 +1,41 @@
+利用PXE远程装机服务批量部署Linux
+优点：统一、高效、标准、安全
+
+步骤一： 安装并配置DHCP服务器
+# yum -y install dhcp
+# cd /usr/share/doc/dhcp-4.2.5/
+# cp dhcp.conf.example /etc/dhcp/dhcpd.conf
+# vim /etc/dhcp/dhcpd.conf
+
+添加PXE引导服务器&引导文件
+
+# systemctl restart dhcpd
+
+步骤二： 安装tftp-Server与syslinux，并配置
+# yum -y install syslinux tftp-server
+# vim /etc/xinetd.d/tftp
+change "disable=yes" to "disbaled=no"
+
+# systemctl restart xinetd
+# netstat -aupn | grep 69
+
+# cd /var/lib/tftpboot
+# cp /usr/share/syslinux/pxelinux.0 ./
+# cp /var/ftp/yum/isolinux/vmlinux ./
+# cp /var/ftp/yum/isolinux/initrd.img ./
+# cp /var/ftp/yum/isolinux/vesamenu.c32 ./
+# cp /var/ftp/yum/isolinux/boot.msg ./
+
+安装VNC
+# rpm -qa | grep vnc
+
+# yum -y install tigervnc-server tigervnc
+# cp /lib/systemd/system/vncserver@.service /etc/systemd/sysytem/vncserver@:3.service //123都可以
+# vim /etc/systemd/system/vncserver@:3.service
+change "<USER>" to your loginid
+# systemctl daemon-reload
+# vncpasswd XXX
+# 配置防火墙
+# systemctl enable vncserver@:3.service //设置开机启动
+切换到配置的账号启动VNC
+# vncserver :3
